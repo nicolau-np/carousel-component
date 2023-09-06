@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+
+}
+
+.wrapper .left {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 12%;
+    height: 95%;
+}
+
+.left .images {
+    margin-top: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.left .images img {
+    width: 100px;
+    height: 70px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    filter: sepia(100%);
+    cursor: pointer;
+}
+
+.left .images img.active {
+    animation-name: activeImage;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes activeImage {
+    0%{
+        filter: sepia(90%);
+        width: 101px;
+    }
+    50%{
+        filter: sepia(50%);
+        width: 110px;
+    }
+    100%{
+        filter: sepia(0);
+        width: 115px;
+    }
+}
+
+.left .operations {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.left .operations a {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid #b80871;
+    align-items: center;
+    justify-content: center;
+    color: #b80871;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+span {
+    transition: all 0.3s linear;
+}
+
+.left .operations a:nth-child(1):hover span {
+    transform: translateX(-20px);
+}
+
+.left .operations a:nth-child(2):hover span {
+    transform: translateX(20px);
+}
+
+.wrapper .right {
+    /* background-color: #b16a13;*/
+    height: 95%;
+    width: 88%;
+}
+
+.item {
+    display: none;
+    padding: 150px 0px;
+    height: 100%;
+}
+
+.item h1 {
+    color: #fff;
+    font-size: 60px;
+    letter-spacing: 2px;
+}
+
+.item h6 {
+    font-size: 24px;
+    color: #b80871;
+}
+
+.item .header-h6{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.item .header-h6 span{
+    width: 200px;
+    height: 1px;
+    background-color: #b80871;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.item .header-h6 span::before{
+    position: absolute;
+    content: "";
+    width: 28px;
+    height: 5px;
+    border-radius: 50px;
+    background-color: #b80871;
+}
+
+.item a {
+    background-color: #b80871;
+    color: #fff;
+    padding: 15px 10px;
+    width: 18%;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.item.active {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+}
+
+.item.active::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-color: #000;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.item.active .header-h6 {
+    animation-name: animateBottom;
+    animation-iteration-count: 1;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+
+.item.active a {
+    animation-name: animateBottom;
+    animation-iteration-count: 1;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    transform: translateY(20px);
+    opacity: 0;
+    position: relative;
+}
+
+.item.active a span{
+    transition: all 0.2s linear;
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    background-color: black;
+    top: 0;
+    left: 0;
+    border-radius: 50px;
+}
+
+.item.active a:hover span{
+    width: 100%;
+    height: 100%;
+}
+
+
+.item.active h1 {
+    animation-name: animateTop;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+@keyframes animateTop {
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes animateBottom {
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
